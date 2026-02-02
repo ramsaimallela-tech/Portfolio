@@ -280,6 +280,29 @@ body {
     padding-bottom: 1rem;
 }
 
-.modal-item:last-child {
-    border-bottom: none;
+border-bottom: none;
+}
+
+/* Social Buttons */
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--accent-color);
+    border-color: var(--accent-color);
 }
