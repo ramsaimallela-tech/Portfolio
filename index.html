@@ -75,10 +75,10 @@
                     class="gradient-text">Achievements</span></h2>
 
             <div class="grid-container">
-                <div class="card fade-in-up">
+                <div class="card fade-in-up" id="skating-card" style="cursor: pointer;">
                     <span class="tag">Roller Skating</span>
                     <h3>Skating Achievements</h3>
-                    <p>Participated in District/State level competitions.</p>
+                    <p>Click to view details (Artistic, Roll Ball, etc.)</p>
                 </div>
                 <div class="card fade-in-up" style="transition-delay: 0.1s;">
                     <span class="tag">Martial Arts</span>
@@ -90,18 +90,12 @@
                     <h3>Yoga & Wellness</h3>
                     <p>Focus on flexibility, mindfulness, and advanced asanas.</p>
                 </div>
-            </div>
+                <div class="card fade-in-up" style="transition-delay: 0.3s;">
+                    <span class="tag">Casual Sports</span>
 
-            <!-- Casual Sports Section -->
-            <h3 class="fade-in-up" style="font-size: 1.8rem; margin-top: 4rem; margin-bottom: 2rem;">Casual <span
-                    class="gradient-text">Sports & Other Wins</span></h3>
-            <div class="grid-container" style="margin-top: 1rem;">
-                <div class="card fade-in-up">
-                    <span class="tag">Casual</span>
-                    <h3>Badminton / Other</h3>
                     <p>Weekend tournaments and friendly matches.</p>
                 </div>
-                <div class="card fade-in-up" style="transition-delay: 0.1s;">
+                <div class="card fade-in-up" style="transition-delay: 0.4s;">
                     <span class="tag">Hobbies</span>
                     <h3>Active Lifestyle</h3>
                     <p>General fitness and recreational sports participation.</p>
@@ -149,6 +143,40 @@
         style="text-align: center; padding: 2rem; border-top: 1px solid var(--glass-border); color: var(--text-secondary); font-size: 0.9rem;">
         <p>&copy; 2026 Mallela Ram Sai Teja. All rights reserved.</p>
     </footer>
+
+    <!-- Skating Details Modal -->
+    <div id="skating-modal" class="modal">
+        <div class="modal-content card">
+            <span class="close-modal">&times;</span>
+            <h2>Roller Skating <span class="gradient-text">Disciplines</span></h2>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Artistic Skating</h3>
+                    <p>Achievements: [Add Level here]</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Figure Skating</h3>
+                    <p>Achievements: [Add Level here]</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Roll Ball</h3>
+                    <p>Achievements: [Add Level here]</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Roller Basketball</h3>
+                    <p>Achievements: [Add Level here]</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Roller Handball</h3>
+                    <p>Achievements: [Add Level here]</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Bandy</h3>
+                    <p>Achievements: [Add Level here]</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -31,8 +31,31 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', (e) => {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
-        
+
         // You could add a custom cursor div here if you want extra flair
         // For now, we keep it performant
     });
+
+    // Modal Logic
+    const modal = document.getElementById("skating-modal");
+    const btn = document.getElementById("skating-card");
+    const span = document.getElementsByClassName("close-modal")[0];
+
+    if (btn) {
+        btn.onclick = function () {
+            modal.classList.add("show");
+        }
+    }
+
+    if (span) {
+        span.onclick = function () {
+            modal.classList.remove("show");
+        }
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.classList.remove("show");
+        }
+    }
 });

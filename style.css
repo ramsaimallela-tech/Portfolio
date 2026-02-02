@@ -50,21 +50,38 @@ body {
 .gradient-text {
     background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
 
 /* Animations */
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 @keyframes glow {
-    0% { box-shadow: 0 0 5px var(--accent-color); }
-    50% { box-shadow: 0 0 20px var(--accent-color); }
-    100% { box-shadow: 0 0 5px var(--accent-color); }
+    0% {
+        box-shadow: 0 0 5px var(--accent-color);
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--accent-color);
+    }
+
+    100% {
+        box-shadow: 0 0 5px var(--accent-color);
+    }
 }
 
 .fade-in-up {
@@ -205,4 +222,64 @@ body {
 
 .btn:hover {
     transform: scale(1.05);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #0d0d0d;
+    margin: auto;
+    padding: 2rem;
+    border: 1px solid var(--accent-color);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    animation: float 0.5s ease-out;
+    /* Reusing float for simple entrance or define new */
+}
+
+.close-modal {
+    color: var(--text-secondary);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: var(--accent-color);
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modal-item {
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 1rem;
+}
+
+.modal-item:last-child {
+    border-bottom: none;
 }
