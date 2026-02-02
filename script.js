@@ -57,5 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target == modal) {
             modal.classList.remove("show");
         }
+        if (event.target == martialModal) {
+            martialModal.classList.remove("show");
+        }
+    }
+
+    // Martial Arts Modal Logic
+    const martialModal = document.getElementById("martial-arts-modal");
+    const martialBtn = document.getElementById("martial-arts-card");
+    const martialSpan = document.getElementById("close-martial");
+
+    if (martialBtn) {
+        martialBtn.onclick = function () {
+            martialModal.classList.add("show");
+        }
+    }
+
+    if (martialSpan) {
+        martialSpan.onclick = function () {
+            martialModal.classList.remove("show");
+        }
     }
 });

@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -80,26 +81,17 @@
                     <h3>Skating Achievements</h3>
                     <p>Click to view details (Artistic, Roll Ball, etc.)</p>
                 </div>
-                <div class="card fade-in-up" style="transition-delay: 0.1s;">
+                <div class="card fade-in-up" id="martial-arts-card" style="transition-delay: 0.1s; cursor: pointer;">
                     <span class="tag">Martial Arts</span>
                     <h3>Martial Arts Profile</h3>
-                    <p>Disciplined training and belt achievements.</p>
+                    <p>Click to view details (Karate, Thang Ta, etc.)</p>
                 </div>
                 <div class="card fade-in-up" style="transition-delay: 0.2s;">
                     <span class="tag">Yoga</span>
                     <h3>Yoga & Wellness</h3>
-                    <p>Focus on flexibility, mindfulness, and advanced asanas.</p>
+                    <p>State Level Achiever</p>
                 </div>
-                <div class="card fade-in-up" style="transition-delay: 0.3s;">
-                    <span class="tag">Casual Sports</span>
 
-                    <p>Weekend tournaments and friendly matches.</p>
-                </div>
-                <div class="card fade-in-up" style="transition-delay: 0.4s;">
-                    <span class="tag">Hobbies</span>
-                    <h3>Active Lifestyle</h3>
-                    <p>General fitness and recreational sports participation.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -138,6 +130,43 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="section" id="contact" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 class="fade-in-up" style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">Let's <span
+                    class="gradient-text">Connect</span></h2>
+            <div class="card fade-in-up" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h3 style="font-size: 2rem;">Mallela Ram Sai Teja</h3>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">Reach out for collaborations or
+                    opportunities.</p>
+
+                <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                    <!-- Email -->
+                    <a href="mailto:your.email@example.com" class="social-btn" title="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/ram-sai-teja-mallela-b6508533a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank" class="social-btn" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/ramsaimallela-tech" target="_blank" class="social-btn" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/ram_skater_2506" target="_blank" class="social-btn"
+                        title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer
         style="text-align: center; padding: 2rem; border-top: 1px solid var(--glass-border); color: var(--text-secondary); font-size: 0.9rem;">
@@ -152,27 +181,47 @@
             <div class="modal-grid">
                 <div class="modal-item">
                     <h3>Artistic Skating</h3>
-                    <p>Achievements: [Add Level here]</p>
+                    <p>Achievements: [National Level]</p>
                 </div>
                 <div class="modal-item">
                     <h3>Figure Skating</h3>
-                    <p>Achievements: [Add Level here]</p>
+                    <p>Achievements: [National Level]</p>
                 </div>
                 <div class="modal-item">
                     <h3>Roll Ball</h3>
-                    <p>Achievements: [Add Level here]</p>
+                    <p>Achievements: [State Level]</p>
                 </div>
                 <div class="modal-item">
                     <h3>Roller Basketball</h3>
-                    <p>Achievements: [Add Level here]</p>
+                    <p>Achievements: [National Level]</p>
                 </div>
                 <div class="modal-item">
                     <h3>Roller Handball</h3>
-                    <p>Achievements: [Add Level here]</p>
+                    <p>Achievements: [National level]</p>
                 </div>
                 <div class="modal-item">
                     <h3>Bandy</h3>
-                    <p>Achievements: [Add Level here]</p>
+                    <p>Achievements: [National level]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Martial Arts Details Modal -->
+    <div id="martial-arts-modal" class="modal">
+        <div class="modal-content card">
+            <span class="close-modal" id="close-martial">&times;</span>
+            <h2>Martial Arts <span class="gradient-text">Journey</span></h2>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Karate</h3>
+                    <p>1st Dan Black Belt</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">International Level (Kumite &
+                        Kata)</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Thang Ta</h3>
+                    <p>State Level Achiever</p>
                 </div>
             </div>
         </div>
