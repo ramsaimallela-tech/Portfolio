@@ -161,6 +161,19 @@ body {
     margin-bottom: 1rem;
 }
 
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.02);
+}
+
 .tag {
     display: inline-block;
     padding: 0.25rem 0.75rem;
@@ -280,8 +293,7 @@ body {
     padding-bottom: 1rem;
 }
 
-border-bottom: none;
-}
+
 
 /* Social Buttons */
 .social-btn {
