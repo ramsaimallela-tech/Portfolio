@@ -143,27 +143,56 @@
 
             <div class="grid-container">
                 <!-- Summer Intern Letter -->
-                <div class="card fade-in-up">
-                    <img src="path/to/internshala_screenshot.jpg" alt="Summer Intern Letter">
+                <div class="card fade-in-up" onclick="openImageModal('images/internshala_letter.jpg')">
+                    <img src="images/internshala_letter.jpg" alt="Summer Intern Letter">
                     <span class="tag">Internship</span>
                     <h3>Summer Intern Letter</h3>
                     <p>Internshala</p>
                 </div>
 
                 <!-- Unstop Certificate -->
-                <div class="card fade-in-up" style="transition-delay: 0.1s;">
-                    <img src="path/to/unstop_certificate.jpg" alt="Unstop Certificate">
+                <div class="card fade-in-up" style="transition-delay: 0.1s;"
+                    onclick="openImageModal('images/unstop_certificate.jpg')">
+                    <img src="images/unstop_certificate.jpg" alt="Unstop Certificate">
                     <span class="tag">Achievement</span>
                     <h3>Certificate of Achievement</h3>
                     <p>Unstop</p>
                 </div>
 
                 <!-- Tata Crucible Certificate -->
-                <div class="card fade-in-up" style="transition-delay: 0.2s;">
-                    <img src="path/to/tata_crucible.jpg" alt="Tata Crucible Certificate">
+                <div class="card fade-in-up" style="transition-delay: 0.2s;"
+                    onclick="openImageModal('images/tata_crucible.jpg')">
+                    <img src="images/tata_crucible.jpg" alt="Tata Crucible Certificate">
                     <span class="tag">Participation</span>
                     <h3>Tata Crucible</h3>
                     <p>Participation Certificate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship Section -->
+    <section class="section" id="internships">
+        <div class="container">
+            <h2 class="fade-in-up" style="font-size: 2.5rem; margin-bottom: 3rem;">Internship <span
+                    class="gradient-text">Experience</span></h2>
+
+            <div class="grid-container">
+                <!-- Lernx Certificate -->
+                <div class="card fade-in-up" onclick="openImageModal('images/lernx_certificate.jpg')">
+                    <img src="images/lernx_certificate.jpg" alt="Lernx Internship Certificate">
+                    <span class="tag">Lernx</span>
+                    <h3>Internship Certificate</h3>
+                    <p>Lernx - Internship Completion</p>
+                </div>
+
+                <!-- Lernx Appreciation -->
+                <div class="card fade-in-up" style="transition-delay: 0.1s;"
+                    onclick="openImageModal('images/lernx_appreciation.jpg')">
+                    <img src="images/lernx_appreciation.jpg" alt="Lernx Appreciation">
+                    <span class="tag">Lernx</span>
+                    <h3>Certificate of Appreciation</h3>
+                    <p>Lernx - Outstanding Performance</p>
                 </div>
             </div>
         </div>
@@ -264,6 +293,14 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div id="image-modal" class="modal" onclick="closeImageModal()">
+        <span class="close-modal"
+            style="position: absolute; top: 20px; right: 30px; font-size: 40px; z-index: 101;">&times;</span>
+        <img class="modal-content" id="modal-image"
+            style="max-width: 90%; max-height: 90%; width: auto; height: auto; object-fit: contain; background: transparent; border: none; box-shadow: none;">
     </div>
 
     <script src="script.js"></script>
