@@ -79,3 +79,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+// Image Modal Functions (Global Scope)
+function openImageModal(src) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    if (modal && modalImg) {
+        modal.style.display = "flex";
+        modalImg.src = src;
+        // Reset animation
+        modalImg.style.animation = 'none';
+        modalImg.offsetHeight; /* trigger reflow */
+        modalImg.style.animation = 'float 0.5s ease-out';
+    } else {
+        console.error("Image modal elements not found!");
+    }
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('image-modal');
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Close modal when clicking on the image (prevent bubbling if needed, but here we usually want close on background)
+// The HTML has onclick="closeImageModal()" on the container, so clicking the container closes it.
+// We should stop propagation on the image so clicking the image DOES NOT close it.
+document.addEventListener('DOMContentLoaded', () => {
+   const modalImg = document.getElementById('modal-image');
+   if(modalImg) {
+       modalImg.addEventListener('click', function(e) {
+           e.stopPropagation();
+       });
+   }
+   
+   // ESC key to close
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            closeImageModal();
+        }
+    });
+});
