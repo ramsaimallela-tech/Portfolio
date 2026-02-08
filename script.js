@@ -78,6 +78,99 @@ document.addEventListener('DOMContentLoaded', () => {
             martialModal.classList.remove("show");
         }
     }
+
+    // Carousel Functionality
+    const track = document.getElementById('carouselTrack');
+    const slides = Array.from(track.children);
+    const nextButton = document.getElementById('nextBtn');
+    const prevButton = document.getElementById('prevBtn');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
+
+    let currentIndex = 0;
+    let autoSlideInterval;
+    const slideInterval = 4000; // 4 seconds per slide
+
+    // Create indicators
+    slides.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        if (index === 0) indicator.classList.add('active');
+        indicator.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(indicator);
+    });
+
+    const indicators = Array.from(indicatorsContainer.children);
+
+    // Update slide position
+    function updateSlidePosition() {
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${currentIndex * (slideWidth + 24)}px)`; // 24px = 1.5rem gap
+
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlidePosition();
+        resetAutoSlide();
+    }
+
+    // Next slide
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlidePosition();
+    }
+
+    // Previous slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlidePosition();
+    }
+
+    // Auto-slide functionality
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, slideInterval);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    function resetAutoSlide() {
+        stopAutoSlide();
+        startAutoSlide();
+    }
+
+    // Event listeners
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+    }
+
+    // Pause auto-slide on hover
+    if (track) {
+        track.addEventListener('mouseenter', stopAutoSlide);
+        track.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', updateSlidePosition);
+
+    // Start auto-slide
+    startAutoSlide();
 });
 
 // Image Modal Functions (Global Scope)
@@ -107,15 +200,15 @@ function closeImageModal() {
 // The HTML has onclick="closeImageModal()" on the container, so clicking the container closes it.
 // We should stop propagation on the image so clicking the image DOES NOT close it.
 document.addEventListener('DOMContentLoaded', () => {
-   const modalImg = document.getElementById('modal-image');
-   if(modalImg) {
-       modalImg.addEventListener('click', function(e) {
-           e.stopPropagation();
-       });
-   }
-   
-   // ESC key to close
-    document.addEventListener('keydown', function(event) {
+    const modalImg = document.getElementById('modal-image');
+    if (modalImg) {
+        modalImg.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
+
+    // ESC key to close
+    document.addEventListener('keydown', function (event) {
         if (event.key === "Escape") {
             closeImageModal();
         }
