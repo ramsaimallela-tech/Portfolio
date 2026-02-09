@@ -166,8 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateSlidePosition(withAnimation = true) {
             track.style.transition = withAnimation ? 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
-            const slideWidth = originalSlides[0].getBoundingClientRect().width;
-            track.style.transform = `translateX(-${currentIndex * (slideWidth + 24)}px)`;
+            const slideWidth = originalSlides[0].offsetWidth;
+            const trackStyle = window.getComputedStyle(track);
+            const gap = parseFloat(trackStyle.columnGap) || parseFloat(trackStyle.gap) || 24;
+            track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
 
             // Update indicators active state based on real index
             let realIndex = currentIndex - 1;
@@ -265,7 +267,7 @@ function toggleCertList(btn) {
     if (list && list.classList.contains('certificate-list')) {
         const isShowing = list.classList.toggle('show');
         btn.textContent = isShowing ? 'HIDE CERTIFICATES' : 'VIEW CERTIFICATES';
-        
+
         // Add subtle animation or scroll if needed
         if (isShowing) {
             list.style.animation = 'fadeIn 0.3s ease-out';

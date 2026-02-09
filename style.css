@@ -811,6 +811,8 @@ body {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     gap: 1.5rem;
+    column-gap: 1.5rem;
+    /* Explicitly defined for JS robustness */
 }
 
 .carousel-slide {
@@ -1015,29 +1017,64 @@ body {
     }
 
     .carousel-section {
-        padding-top: 100px !important;
+        padding-top: 60px !important;
     }
 
     .menu-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .carousel-wrapper {
+        gap: 0;
+        position: relative;
+    }
+
     .carousel-btn {
-        width: 40px;
-        height: 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 35px;
+        height: 35px;
+        background: rgba(10, 10, 20, 0.8);
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .carousel-btn.prev {
+        left: 5px;
+    }
+
+    .carousel-btn.next {
+        right: 5px;
+    }
+
+    .carousel-btn:hover {
+        transform: translateY(-50%) scale(1.1);
     }
 
     .carousel-card {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem;
+        max-width: 90vw;
+    }
+
+    .carousel-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .carousel-card p {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
     }
 
     .carousel-icon {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
     }
 
     .carousel-icon i {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }
 
