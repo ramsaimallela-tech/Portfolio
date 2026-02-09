@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { btnId: "skating-card", modalId: "skating-modal", closeId: null }, // Uses .close-modal inside
         { btnId: "martial-arts-card", modalId: "martial-arts-modal", closeId: "close-martial" },
         { btnId: "yoga-card", modalId: "yoga-modal", closeId: "close-yoga" },
-        { btnId: "special-achievements-card", modalId: "special-achievements-modal", closeId: "close-special" }
+        { btnId: "special-achievements-card", modalId: "special-modal", closeId: "close-special" }
     ];
 
     modalsMap.forEach(item => {
@@ -256,5 +256,19 @@ function closeImageModal() {
     const modal = document.getElementById('image-modal');
     if (modal) {
         modal.style.display = "none";
+    }
+}
+
+// 7. Sport Certificate List Toggle
+function toggleCertList(btn) {
+    const list = btn.nextElementSibling;
+    if (list && list.classList.contains('certificate-list')) {
+        const isShowing = list.classList.toggle('show');
+        btn.textContent = isShowing ? 'HIDE CERTIFICATES' : 'VIEW CERTIFICATES';
+        
+        // Add subtle animation or scroll if needed
+        if (isShowing) {
+            list.style.animation = 'fadeIn 0.3s ease-out';
+        }
     }
 }

@@ -210,7 +210,9 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 2rem 0;
-    z-index: 1000;
+    z-index: 2000;
+    /* Increased z-index to stay above everyting */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-logo {
@@ -405,9 +407,30 @@ body {
 /* Cards (Glassmorphism) */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* Increased min-width for better side-by-side on larger screens */
     gap: 2rem;
     margin-top: 3rem;
+}
+
+/* Specific Layout for Certifications and Internships */
+#certifications .grid-container,
+#internships .grid-container {
+    max-width: 1000px;
+    /* Centered and tight for 2 items per row */
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+@media (max-width: 850px) {
+
+    #certifications .grid-container,
+    #internships .grid-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 .card {
@@ -415,21 +438,62 @@ body {
     border: 1px solid var(--glass-border);
     border-radius: 1rem;
     padding: 2rem;
-    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(10px);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Premium Glow for specific cards */
+#certifications .card,
+#internships .card,
+#certificate-gallery .card {
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    background: rgba(10, 10, 20, 0.6);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
     border-color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15),
+        inset 0 0 15px rgba(0, 255, 136, 0.05);
+}
+
+/* Shimmer Animation for Premium Cards */
+#certifications .card::after,
+#internships .card::after,
+#certificate-gallery .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 255, 136, 0.05),
+            transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+#certifications .card:hover::after,
+#internships .card:hover::after,
+#certificate-gallery .card:hover::after {
+    left: 100%;
+    transition: 0.7s;
 }
 
 .card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
+    background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .card p {
@@ -440,7 +504,11 @@ body {
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 180px;
+    /* Fixed height for consistency */
+    object-fit: contain;
+    /* Ensure images aren't cut off */
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid var(--glass-border);
@@ -535,15 +603,30 @@ body {
 }
 
 .modal-content {
-    background: #0d0d0d;
-    margin: auto;
-    padding: 2rem;
-    border: 1px solid var(--accent-color);
+    background: rgba(10, 10, 20, 0.95);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
     width: 90%;
-    max-width: 600px;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow-y: auto;
     position: relative;
-    animation: float 0.5s ease-out;
-    /* Reusing float for simple entrance or define new */
+    backdrop-filter: blur(20px);
+    animation: fadeInScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .close-modal {
@@ -567,7 +650,61 @@ body {
 
 .modal-item {
     border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 1rem;
+    padding: 1.5rem 0;
+    text-align: left;
+}
+
+.modal-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.modal-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.certificate-list {
+    display: none;
+    /* Hidden by default, toggled via JS or just listed if user prefers */
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--accent-color);
+}
+
+.certificate-list.show {
+    display: block;
+}
+
+.cert-link {
+    display: block;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.cert-link:hover {
+    color: var(--accent-color);
+}
+
+.view-certs-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-certs-btn:hover {
+    background: var(--accent-color);
+    color: #000;
 }
 
 
