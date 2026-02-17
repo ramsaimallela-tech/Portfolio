@@ -399,16 +399,128 @@ body {
     margin: 0 auto 2rem;
 }
 
+
 .scroll-indicator {
     position: absolute;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    animation: float 2s infinite ease-in-out;
-    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.8;
 }
 
-/* Cards (Glassmorphism) */
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 20px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: mouse-wheel 1.5s infinite;
+}
+
+.arrow-scroll span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid var(--text-secondary);
+    border-right: 2px solid var(--text-secondary);
+    transform: rotate(45deg);
+    margin: -4px 0;
+    animation: arrow-scroll 2s infinite;
+}
+
+.arrow-scroll span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.arrow-scroll span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.scroll-text {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+@keyframes mouse-wheel {
+    0% {
+        top: 6px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 20px;
+        opacity: 0;
+    }
+}
+
+@keyframes arrow-scroll {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+}
+
+/* CTA Pulse Animation */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 2rem;
+    transition: transform 0.2s;
+    margin-top: 2rem;
+    animation: pulse-cta 2s infinite;
+}
+
+@keyframes pulse-cta {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 255, 136, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+    }
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    animation: none;
+}
+
+/* Glassmorphism Cards */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
@@ -1032,6 +1144,19 @@ body {
     /* Adjust sections for mobile nav */
     .section {
         padding-top: 80px;
+        min-height: auto;
+        /* Allow sections to be natural height */
+    }
+
+    /* Hero "Peek" Effect */
+    .hero {
+        min-height: 90vh;
+        /* Shows a peek of the next section */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 4rem;
+        /* Space for scroll indicator */
     }
 
     .carousel-section {
