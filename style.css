@@ -1060,77 +1060,152 @@ body {
 
     .carousel-container {
         padding: 0;
+        position: relative;
+    }
+
+    /* Track container */
+    .carousel-track-container {
+        overflow: hidden;
+        min-height: 440px;
+        /* Increased slightly for shadow/pulse */
+        display: flex;
+        align-items: center;
+    }
+
+    .carousel-track {
+        min-height: 420px;
+        display: flex;
+        align-items: center;
     }
 
     .carousel-wrapper {
         gap: 0;
         position: relative;
+        min-height: 440px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
+    /* Navigation Buttons - Enhanced for engagement */
     .carousel-btn {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 10;
-        width: 35px;
-        height: 35px;
-        background: rgba(10, 10, 20, 0.9);
+        z-index: 20;
+        /* Ensure above everything */
+        width: 40px;
+        /* Larger touch target */
+        height: 40px;
+        background: rgba(0, 0, 0, 0.6);
+        /* Darker background for contrast */
         border: 1px solid var(--accent-color);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        backdrop-filter: blur(4px);
+        animation: pulse-btn 2s infinite;
     }
 
     .carousel-btn.prev {
-        left: 0;
+        left: 5px;
+        /* Slight offset from edge */
     }
 
     .carousel-btn.next {
-        right: 0;
+        right: 5px;
     }
 
-    .carousel-btn:hover {
+    .carousel-btn:hover,
+    .carousel-btn:active {
+        background: var(--accent-color);
+        color: #000;
         transform: translateY(-50%) scale(1.1);
+        animation: none;
+        /* Stop pulse on interaction */
     }
 
-    /* Fix carousel slide padding on mobile */
+    @keyframes pulse-btn {
+        0% {
+            box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
+        }
+
+        70% {
+            box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+        }
+    }
+
+    /* Slide & Card Layout */
     .carousel-slide {
-        padding: 0;
+        padding: 0 !important;
         min-width: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        min-height: 400px;
     }
 
     .carousel-card {
-        padding: 1.5rem 1rem;
-        max-width: 100%;
-        width: calc(100vw - 80px);
+        padding: 1.5rem;
+        max-width: 85vw;
+        /* Percentage width for safety */
+        width: 85vw;
         margin: 0 auto;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        visibility: visible !important;
+        opacity: 1 !important;
+        min-height: 380px;
+        background: rgba(20, 20, 30, 0.95);
+        /* More opaque */
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        /* Deep shadow */
     }
 
     .carousel-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        margin-top: 0.5rem;
     }
 
     .carousel-card p {
-        font-size: 0.85rem;
-        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
     }
 
     .carousel-card .tag {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.6rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+        margin: 0.2rem;
     }
 
     .carousel-icon {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         margin-bottom: 1rem;
+        background: rgba(0, 255, 136, 0.05);
     }
 
     .carousel-icon i {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
+    /* "View Credential" Link - More prominent */
     .carousel-link {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+        background: rgba(0, 255, 136, 0.1);
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: auto;
+        /* Push to bottom */
     }
 }
 
